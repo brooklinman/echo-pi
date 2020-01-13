@@ -63,7 +63,7 @@ class device_handler(debounce_handler):
         GPIO.output(port,GPIO.LOW)
 
     def act(self, client_address, state, name):
-        print "State", state, "on ", name, "from client @", client_address, "gpio port: ",gpio_ports[str(name)]
+        print ("State", state, "on ", name, "from client @", client_address, "gpio port: ",gpio_ports[str(name)])
         self.trigger(gpio_ports[str(name)],state)
         return True
 
@@ -87,6 +87,6 @@ if __name__ == "__main__":
             # Allow time for a ctrl-c to stop the process
             p.poll(100)
             time.sleep(0.1)
-        except Exception, e:
+        except Exception as e:
             logging.critical("Critical exception: " + str(e))
             break
